@@ -14,9 +14,12 @@ The [Open Source Guides](https://opensource.guide/) website has a collection of 
 ### Issues
 
 When opening issues, in order to have a clear idea of what is wrong or what new feature should be implemented
-it is recomended to use the following template: [Issue Template](Issue-Template.md)
+it is recomended to use one of the following templates:
+
+- [Bug Issue Template](.github/ISSUE_TEMPLATE/bug_report.md)
+- [Feature Issue Template](.github/ISSUE_TEMPLATE/feature_request.md)
 
 ### Pull requests
 
 When opening pull requests, in order to have a clear idea of what is wrong or what new feature should be implemented
-it is recomended to use the following template: [Pull Request Template](Pull-Request-Template.md)
+it is recomended to use the following template: [Pull Request Template](PULL_REQUEST_TEMPLATE.md)
