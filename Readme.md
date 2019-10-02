@@ -1,4 +1,4 @@
-# Hacktoberfest-React-XP
+# Hacktoberfest
 
 React XP application to track Hacktoberfest issues to encourage new contributors to join Open Source
 
@@ -23,3 +23,8 @@ it is recomended to use one of the following templates:
 
 When opening pull requests, in order to have a clear idea of what is wrong or what new feature should be implemented
 it is recomended to use the following template: [Pull Request Template](PULL_REQUEST_TEMPLATE.md)
+
+#### Tools
+
+- React XP
+- In progress...
