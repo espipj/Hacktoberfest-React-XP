@@ -1,6 +1,6 @@
 # Hacktoberfest
 
-React XP application to track Hacktoberfest issues to encourage new contributors to join Open Source
+[React XP](https://microsoft.github.io/reactxp/) application to track Hacktoberfest issues to encourage new contributors to join Open Source
 
 ## Contributors
 
