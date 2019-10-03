@@ -18,6 +18,7 @@ it is recomended to use one of the following templates:
 
 - [Bug Issue Template](.github/ISSUE_TEMPLATE/bug_report.md)
 - [Feature Issue Template](.github/ISSUE_TEMPLATE/feature_request.md)
+- [Discussion Issue Template](.github/ISSUE_TEMPLATE/discussion.md)
 
 ### Pull requests
 
