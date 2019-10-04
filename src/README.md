@@ -1,9 +1,15 @@
 # Hacktoberfest
 
+### Style
+
+- Prettier configuration is at `.prettierrc.json` and typescript/javascript code must be formatted using that config and prettier before getting merged into master.
+
 ### Installation
+
 ```shell
 npm i
 ```
+
 ### Commands
 
 - `yarn start:web` - runs the Web version of the app in the development mode
@@ -14,4 +20,5 @@ npm i
 - `yarn start:rn-dev-server` - runs react native (RN) development server
 
 ---
+
 Created by **create-rx-app@0.6.4**
