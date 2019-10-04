@@ -20,7 +20,6 @@
     "noResolve": false,
     "module": "es2015",
     "target": "es2015",
-    "allowJs": true,
     "jsx": "react",
     "lib": ["es5", "es2015", "dom"]
   },
