@@ -2,7 +2,12 @@
 
 ### Style
 
-- Prettier configuration is at `.prettierrc.json` and typescript/javascript code must be formatted using that config and prettier before getting merged into master.
+- Prettier configuration is at `.prettierrc.json` and typescript/javascript code must be formatted using that config and prettier before getting merged into master. This project
+is setup with husky which triggers tests for lint and prettier errors pre-push. This means you will need to fix these errors before you are able to push any code.
+
+### Tests
+- All tests will need to pass before getting merged into master.  Run `yarn test` or `yarn test:watch` to check that your additions do not break any tests. Similar to how to styles
+are checked pre-push, tests also run and must pass before any code can be pushed. 
 
 ### Installation
 

@@ -1,5 +1,5 @@
 {
     "hooks": {
-      "pre-commit": "yarn prettier-check && yarn lint && yarn test"
+      "pre-push": "yarn prettier-check && yarn lint && yarn test"
     }
 }
