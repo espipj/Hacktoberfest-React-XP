@@ -1,0 +1,3 @@
+rootProject.name = 'Hacktoberfest'
+
+include ':app'

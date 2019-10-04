@@ -25,7 +25,9 @@ it is recomended to use one of the following templates:
 When opening pull requests, in order to have a clear idea of what is wrong or what new feature should be implemented
 it is recomended to use the following template: [Pull Request Template](PULL_REQUEST_TEMPLATE.md)
 
-#### Tools
+### Tools
+
+Technical documentation can be found [here](src/README.md). Some of the tools that the project will be using are:
 
 - React XP
 - In progress...
