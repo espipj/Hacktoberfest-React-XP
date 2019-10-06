@@ -48,6 +48,14 @@ export class App extends RX.Component {
           <RX.Text style={_styles.title}>
             Welcome to <RX.Text style={_styles.name}>Hacktoberfest</RX.Text>
           </RX.Text>
+          <RX.View style={_styles.links}>
+            <RX.Link
+              style={_styles.link}
+              url={'https://github.com/espipj/Hacktoberfest-React-XP'}
+            >
+              GitHub Repo
+            </RX.Link>
+          </RX.View>
         </RX.View>
       </RX.View>
     );
