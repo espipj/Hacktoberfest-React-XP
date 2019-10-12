@@ -1,11 +1,24 @@
 import React from 'react';
-import RX from 'reactxp';
+import RX, { CommonProps, ActivityIndicator } from 'reactxp';
+import { IssueList } from './components/IssueList';
+import axios from 'axios';
+import { Item } from './types/main';
 
 const _styles = {
+  root: RX.Styles.createViewStyle({
+    flex: 1,
+    flexDirection: 'column',
+  }),
+  header: RX.Styles.createViewStyle({
+    backgroundColor: 'white',
+    justifyContent: 'flex-end',
+    flex: 0.5,
+  }),
   main: RX.Styles.createViewStyle({
+    flexBasis: 1,
+    flexGrow: 9,
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1,
   }),
 
   title: RX.Styles.createTextStyle({
@@ -14,37 +27,54 @@ const _styles = {
     textAlign: 'center',
   }),
 
-  label: RX.Styles.createTextStyle({
-    marginTop: 10,
-    textAlign: 'center',
-    fontSize: 16,
-  }),
-
   name: RX.Styles.createTextStyle({
     fontWeight: 'bold',
     fontSize: 36,
     color: '#a11ec6',
   }),
-
-  links: RX.Styles.createViewStyle({
-    justifyContent: 'center',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 10,
-  }),
-
-  link: RX.Styles.createLinkStyle({
-    marginRight: 5,
-    marginLeft: 5,
-    color: '#0070E0',
-  }),
 };
 
-export class App extends RX.Component {
-  public render() {
+export interface AppState {
+  items: Item[];
+  loading: boolean;
+}
+
+export class App extends RX.Component<CommonProps, AppState> {
+  constructor(props: CommonProps) {
+    super(props);
+    this.state = { loading: true, items: [] };
+  }
+
+  componentWillMount() {
+    axios
+      .get(
+        `https://api.github.com/search/issues?q=label:hacktoberfest+type:issue+state:open+no:assignee&per_page=100`
+      )
+      .then(response => {
+        const items = response.data.items;
+        this.setState({ items: items, loading: false });
+      });
+  }
+
+  private _renderList() {
     return (
-      <RX.View style={_styles.main}>
-        <RX.View>
+      <RX.View style={_styles.root}>
+        <RX.View style={_styles.header}>
+          <RX.Text style={_styles.title}>
+            Welcome to <RX.Text style={_styles.name}>Hacktoberfest</RX.Text>
+          </RX.Text>
+        </RX.View>
+        <RX.View style={_styles.main}>
+          <IssueList issues={this.state.items} />
+        </RX.View>
+      </RX.View>
+    );
+  }
+
+  private _renderLoading() {
+    return (
+      <RX.View style={_styles.root}>
+        <RX.View style={_styles.header}>
           <RX.Text style={_styles.title}>
             Welcome to <RX.Text style={_styles.name}>Hacktoberfest</RX.Text>
           </RX.Text>
@@ -57,7 +87,17 @@ export class App extends RX.Component {
             </RX.Link>
           </RX.View>
         </RX.View>
+        <RX.View style={_styles.main}>
+          <ActivityIndicator color="blue" size="large" />
+        </RX.View>
       </RX.View>
     );
+  }
+
+  public render() {
+    if (!this.state.loading) {
+      return this._renderList();
+    }
+    return this._renderLoading();
   }
 }
