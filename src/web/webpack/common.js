@@ -18,14 +18,22 @@ const buildConfig = (env, argv) => ({
 
   module: {
     rules: [
-      { test: /\.jsx?$/, loader: 'eslint-loader', include: APP_PATH, enforce: 'pre' },
-      { test: /\.tsx?$/, loader: 'babel-loader', include: APP_PATH }
+      {
+        test: /\.jsx?$/,
+        loader: 'eslint-loader',
+        include: APP_PATH,
+        enforce: 'pre',
+      },
+      { test: /\.tsx?$/, loader: 'babel-loader', include: APP_PATH },
     ],
   },
 
   plugins: [
     new webpack.DefinePlugin({ __DEV__: argv.mode === 'development' }),
-    new HtmlWebpackPlugin({ inject: true, template: path.join(WEB_PATH, 'template.html') }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.join(WEB_PATH, 'template.html'),
+    }),
     new ForkTsCheckerWebpackPlugin({ tsconfig: TS_CONFIG_PATH, async: true }),
   ],
 });
