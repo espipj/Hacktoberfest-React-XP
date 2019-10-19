@@ -2,7 +2,8 @@ import React from 'react';
 import RX, { CommonProps, ActivityIndicator } from 'reactxp';
 import { IssueList } from './components/IssueList';
 import axios from 'axios';
-import { Item } from './types/main';
+import { Item, Language } from './types/main';
+import { FilterForm } from './components/FilterForm';
 
 const _styles = {
   root: RX.Styles.createViewStyle({
@@ -11,7 +12,7 @@ const _styles = {
   }),
   header: RX.Styles.createViewStyle({
     backgroundColor: 'white',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     flex: 0.5,
   }),
   main: RX.Styles.createViewStyle({
@@ -37,23 +38,53 @@ const _styles = {
 export interface AppState {
   items: Item[];
   loading: boolean;
+  languages: Language[];
+  selectedLanguage: number;
 }
 
 export class App extends RX.Component<CommonProps, AppState> {
   constructor(props: CommonProps) {
     super(props);
-    this.state = { loading: true, items: [] };
+    this.state = {
+      loading: true,
+      items: [],
+      languages: [
+        { name: 'JavaScript', reqName: 'js' },
+        { name: 'Python', reqName: 'python' },
+      ],
+      selectedLanguage: 0,
+    };
+  }
+
+  private onLanguageSelect(language: number) {
+    this.setState({ selectedLanguage: language });
+    return this.requestLanguageData(language);
   }
 
   componentWillMount() {
+    this.requestLanguageData();
+  }
+
+  requestLanguageData(languageIdx?: number) {
+    this.setState({ loading: true });
     axios
       .get(
-        `https://api.github.com/search/issues?q=label:hacktoberfest+type:issue+state:open+no:assignee&per_page=100`
+        this.createURL(
+          this.state.languages[
+            typeof languageIdx !== 'undefined'
+              ? languageIdx
+              : this.state.selectedLanguage
+          ]
+        )
       )
       .then(response => {
         const items = response.data.items;
         this.setState({ items: items, loading: false });
       });
+  }
+
+  private createURL(language: Language) {
+    return `https://api.github.com/search/issues?q=label:hacktoberfest+type:issue+state:open+no:assignee+language:${language.reqName}&per_page=100`;
   }
 
   private _renderList() {
@@ -65,6 +96,11 @@ export class App extends RX.Component<CommonProps, AppState> {
           </RX.Text>
         </RX.View>
         <RX.View style={_styles.main}>
+          <FilterForm
+            languages={this.state.languages}
+            onLanguageSelect={this.onLanguageSelect.bind(this)}
+            selectedLanguage={this.state.selectedLanguage}
+          />
           <IssueList issues={this.state.items} />
         </RX.View>
       </RX.View>

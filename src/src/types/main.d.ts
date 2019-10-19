@@ -90,3 +90,8 @@ export interface PullRequest {
 export enum State {
   Open = 'open',
 }
+
+export interface Language {
+  name: string;
+  reqName: string;
+}
