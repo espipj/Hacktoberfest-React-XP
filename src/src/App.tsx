@@ -13,6 +13,7 @@ const _styles = {
   header: RX.Styles.createViewStyle({
     backgroundColor: 'white',
     justifyContent: 'center',
+    alignItems: 'center',
     flex: 0.5,
   }),
   main: RX.Styles.createViewStyle({
@@ -94,13 +95,13 @@ export class App extends RX.Component<CommonProps, AppState> {
           <RX.Text style={_styles.title}>
             Welcome to <RX.Text style={_styles.name}>Hacktoberfest</RX.Text>
           </RX.Text>
-        </RX.View>
-        <RX.View style={_styles.main}>
           <FilterForm
             languages={this.state.languages}
             onLanguageSelect={this.onLanguageSelect.bind(this)}
             selectedLanguage={this.state.selectedLanguage}
           />
+        </RX.View>
+        <RX.View style={_styles.main}>
           <IssueList issues={this.state.items} />
         </RX.View>
       </RX.View>
@@ -114,14 +115,11 @@ export class App extends RX.Component<CommonProps, AppState> {
           <RX.Text style={_styles.title}>
             Welcome to <RX.Text style={_styles.name}>Hacktoberfest</RX.Text>
           </RX.Text>
-          <RX.View style={_styles.links}>
-            <RX.Link
-              style={_styles.link}
-              url={'https://github.com/espipj/Hacktoberfest-React-XP'}
-            >
-              GitHub Repo
-            </RX.Link>
-          </RX.View>
+          <FilterForm
+            languages={this.state.languages}
+            onLanguageSelect={this.onLanguageSelect.bind(this)}
+            selectedLanguage={this.state.selectedLanguage}
+          />
         </RX.View>
         <RX.View style={_styles.main}>
           <ActivityIndicator color="blue" size="large" />
