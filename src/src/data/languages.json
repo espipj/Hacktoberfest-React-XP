@@ -1,0 +1,5 @@
+[
+  { "name": "JavaScript", "reqName": "js", "color": "#f1e05a" },
+  { "name": "Python", "reqName": "python", "color": "#3572A5" },
+  { "name": "PHP", "reqName": "php", "color": "#4F5D95" }
+]

@@ -5,37 +5,6 @@ import axios from 'axios';
 import { Item, Language } from './types/main';
 import { FilterForm } from './components/FilterForm';
 
-const _styles = {
-  root: RX.Styles.createViewStyle({
-    flex: 1,
-    flexDirection: 'column',
-  }),
-  header: RX.Styles.createViewStyle({
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 0.5,
-  }),
-  main: RX.Styles.createViewStyle({
-    flexBasis: 1,
-    flexGrow: 9,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }),
-
-  title: RX.Styles.createTextStyle({
-    fontWeight: 'bold',
-    fontSize: 36,
-    textAlign: 'center',
-  }),
-
-  name: RX.Styles.createTextStyle({
-    fontWeight: 'bold',
-    fontSize: 36,
-    color: '#a11ec6',
-  }),
-};
-
 export interface AppState {
   items: Item[];
   loading: boolean;
@@ -46,13 +15,11 @@ export interface AppState {
 export class App extends RX.Component<CommonProps, AppState> {
   constructor(props: CommonProps) {
     super(props);
+    var languages = require('./data/languages.json');
     this.state = {
       loading: true,
       items: [],
-      languages: [
-        { name: 'JavaScript', reqName: 'js' },
-        { name: 'Python', reqName: 'python' },
-      ],
+      languages: languages,
       selectedLanguage: 0,
     };
   }
@@ -102,7 +69,10 @@ export class App extends RX.Component<CommonProps, AppState> {
           />
         </RX.View>
         <RX.View style={_styles.main}>
-          <IssueList issues={this.state.items} />
+          <IssueList
+            issues={this.state.items}
+            color={this.state.languages[this.state.selectedLanguage].color}
+          />
         </RX.View>
       </RX.View>
     );
@@ -122,7 +92,10 @@ export class App extends RX.Component<CommonProps, AppState> {
           />
         </RX.View>
         <RX.View style={_styles.main}>
-          <ActivityIndicator color="blue" size="large" />
+          <ActivityIndicator
+            color={this.state.languages[this.state.selectedLanguage].color}
+            size="large"
+          />
         </RX.View>
       </RX.View>
     );
@@ -135,3 +108,34 @@ export class App extends RX.Component<CommonProps, AppState> {
     return this._renderLoading();
   }
 }
+
+const _styles = {
+  root: RX.Styles.createViewStyle({
+    flex: 1,
+    flexDirection: 'column',
+  }),
+  header: RX.Styles.createViewStyle({
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 0.5,
+  }),
+  main: RX.Styles.createViewStyle({
+    flexBasis: 1,
+    flexGrow: 9,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }),
+
+  title: RX.Styles.createTextStyle({
+    fontWeight: 'bold',
+    fontSize: 36,
+    textAlign: 'center',
+  }),
+
+  name: RX.Styles.createTextStyle({
+    fontWeight: 'bold',
+    fontSize: 36,
+    color: '#a11ec6',
+  }),
+};

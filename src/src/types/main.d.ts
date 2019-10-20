@@ -94,4 +94,5 @@ export enum State {
 export interface Language {
   name: string;
   reqName: string;
+  color: string;
 }

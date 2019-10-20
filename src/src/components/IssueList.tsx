@@ -14,6 +14,7 @@ export interface IssueListItemInfo extends VirtualListViewItemInfo {
 
 export interface IssueProps extends CommonProps {
   issues: IssueType[];
+  color: string;
 }
 export interface IssueListState {
   items: IssueListItemInfo[];
@@ -22,9 +23,9 @@ export interface IssueListState {
 
 const _styles = {
   listView: Styles.createViewStyle({
-    backgroundColor: '#add8e6',
     flex: 1,
     width: 390,
+    borderRadius: 6,
   }),
 };
 
@@ -45,7 +46,12 @@ export class IssueList extends Component<IssueProps, IssueListState> {
 
   public render() {
     return (
-      <View style={_styles.listView}>
+      <View
+        style={[
+          _styles.listView,
+          Styles.createViewStyle({ backgroundColor: this.props.color }),
+        ]}
+      >
         <VirtualListView
           itemList={this.state.items}
           renderItem={this._renderItem}

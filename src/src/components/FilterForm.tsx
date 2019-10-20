@@ -13,19 +13,21 @@ const _styles = {
     padding: 4,
   }),
   aroundLangSelected: Styles.createViewStyle({
-    backgroundColor: '#ffff6e',
     borderRadius: 20,
   }),
 };
 export class FilterForm extends Component<FilterFormProps> {
   render() {
-    const languageLabels = this.props.languages.map(({ name }, idx) => (
+    const languageLabels = this.props.languages.map(({ name, color }, idx) => (
       <View
         key={idx}
         style={[
           _styles.aroundLang,
           idx === this.props.selectedLanguage
-            ? _styles.aroundLangSelected
+            ? [
+                _styles.aroundLangSelected,
+                Styles.createViewStyle({ backgroundColor: color }),
+              ]
             : Styles.createViewStyle({}),
         ]}
         onPress={() => this.props.onLanguageSelect(idx)}
