@@ -28,11 +28,10 @@ jobs:
     docker:
       - image: circleci/node:7.10
 
-    working_directory: ~/repo
+    working_directory: ~/repo/src
 
     steps:
       - checkout
-      - cd src
       # Download and cache dependencies
       - restore_cache:
           keys:
