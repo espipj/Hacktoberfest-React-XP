@@ -45,5 +45,5 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # Deploy using github pages!
+      # Deploy using gh-pages!
       - run: npm run deploy:web
