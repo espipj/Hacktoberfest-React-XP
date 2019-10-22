@@ -1,5 +1,8 @@
 [
   { "name": "JavaScript", "reqName": "js", "color": "#f1e05a" },
   { "name": "Python", "reqName": "python", "color": "#3572A5" },
-  { "name": "PHP", "reqName": "php", "color": "#4F5D95" }
+  { "name": "PHP", "reqName": "php", "color": "#4F5D95" },
+  { "name": "Java", "reqName": "java", "color": "#b07219" },
+  { "name": "Go", "reqName": "go", "color": "#00ADD8" },
+  { "name": "Rust", "reqName": "rust", "color": "#dea584" }
 ]
