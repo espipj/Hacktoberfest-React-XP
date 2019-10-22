@@ -47,7 +47,10 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # Deploy using gh-pages!
-      - run: npm run deploy:web
+      - run:
+          name: "Deploying to http://espipj.github.io/Hacktoberfest"
+          command: |
+            node deploy-gh-pages.js ${GTK}
 
 workflows:
   version: 2
