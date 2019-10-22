@@ -1,3 +1,4 @@
+# CircleCI config in oreder tu build/test and deploy this project
 version: 2
 jobs:
   build:
