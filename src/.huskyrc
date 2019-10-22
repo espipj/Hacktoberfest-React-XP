@@ -1,0 +1,5 @@
+{
+    "hooks": {
+      "pre-push": "yarn prettier-check && yarn lint && yarn test"
+    }
+}
