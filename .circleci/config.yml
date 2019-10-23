@@ -50,6 +50,7 @@ jobs:
       - run:
           name: "Deploying to http://espipj.github.io/Hacktoberfest"
           command: |
+            yarn run build:web
             node deploy-gh-pages.js ${GTK}
 
 workflows:
