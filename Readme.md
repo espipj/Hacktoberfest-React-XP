@@ -1,4 +1,5 @@
 # Hacktoberfest
+[![CircleCI](https://circleci.com/gh/espipj/Hacktoberfest-React-XP.svg?style=svg)](https://circleci.com/gh/espipj/Hacktoberfest-React-XP)
 
 [React XP](https://microsoft.github.io/reactxp/) application to track Hacktoberfest issues to encourage new contributors to join Open Source
 
