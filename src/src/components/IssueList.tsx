@@ -25,7 +25,7 @@ const _styles = {
   listView: Styles.createViewStyle({
     flex: 1,
     width: 390,
-    borderRadius: 6,
+    borderRadius: 7,
   }),
 };
 
