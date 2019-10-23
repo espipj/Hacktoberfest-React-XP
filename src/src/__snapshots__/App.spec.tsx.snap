@@ -4,14 +4,23 @@ exports[`<App /> matches its snapshot 1`] = `
 <View
   style={
     Object {
-      "alignItems": "center",
+      "flexDirection": "column",
       "flexGrow": 1,
       "flexShrink": 1,
-      "justifyContent": "center",
     }
   }
 >
-  <View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "white",
+        "flexGrow": 0.5,
+        "flexShrink": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
     <Text
       style={
         Object {
@@ -34,6 +43,59 @@ exports[`<App /> matches its snapshot 1`] = `
         Hacktoberfest
       </Text>
     </Text>
+    <FilterForm
+      languages={
+        Array [
+          Object {
+            "color": "#f1e05a",
+            "name": "JavaScript",
+            "reqName": "js",
+          },
+          Object {
+            "color": "#3572A5",
+            "name": "Python",
+            "reqName": "python",
+          },
+          Object {
+            "color": "#4F5D95",
+            "name": "PHP",
+            "reqName": "php",
+          },
+          Object {
+            "color": "#b07219",
+            "name": "Java",
+            "reqName": "java",
+          },
+          Object {
+            "color": "#00ADD8",
+            "name": "Go",
+            "reqName": "go",
+          },
+          Object {
+            "color": "#dea584",
+            "name": "Rust",
+            "reqName": "rust",
+          },
+        ]
+      }
+      onLanguageSelect={[Function]}
+      selectedLanguage={0}
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexBasis": 1,
+        "flexGrow": 9,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <ActivityIndicator
+      color="#f1e05a"
+      size="large"
+    />
   </View>
 </View>
 `;
